@@ -4,17 +4,31 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'screens/home/home_screen.dart';
 import 'screens/admin/admin_screen.dart';
 import 'theme/app_theme.dart';
+import 'config/env_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
-  await dotenv.load(fileName: ".env");
-  
+
+  String supabaseUrl;
+  String supabaseAnonKey;
+
+  try {
+    // محاولة تحميل .env للتطوير المحلي
+    await dotenv.load(fileName: ".env");
+    supabaseUrl = dotenv.env['SUPABASE_URL'] ?? EnvConfig.supabaseUrl;
+    supabaseAnonKey =
+        dotenv.env['SUPABASE_ANON_KEY'] ?? EnvConfig.supabaseAnonKey;
+  } catch (e) {
+    // إذا فشل تحميل .env (مثل في الإنتاج)، استخدم القيم من EnvConfig
+    supabaseUrl = EnvConfig.supabaseUrl;
+    supabaseAnonKey = EnvConfig.supabaseAnonKey;
+  }
+
   await Supabase.initialize(
-    url: dotenv.env['SUPABASE_URL']!,
-    anonKey: dotenv.env['SUPABASE_ANON_KEY']!,
+    url: supabaseUrl,
+    anonKey: supabaseAnonKey,
   );
-  
+
   runApp(const WaslaApp());
 }
 

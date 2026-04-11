@@ -266,7 +266,32 @@ body {
     color: var(--on-surface-variant);
 }
 
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--on-surface-variant);
+    font-size: 16px;
+}
+
+.error-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--error);
+    font-size: 16px;
+}
+
 /* Responsive */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .content-body {
+        padding: 24px;
+    }
+}
+
 @media (max-width: 1024px) {
     .sidebar {
         width: 200px;
@@ -275,6 +300,19 @@ body {
     .data-table th,
     .data-table td {
         padding: 12px 16px;
+        font-size: 13px;
+    }
+    
+    .content-header h1 {
+        font-size: 24px;
+    }
+    
+    .stat-card {
+        padding: 12px 20px;
+    }
+    
+    .stat-value {
+        font-size: 20px;
     }
 }
 
@@ -285,13 +323,187 @@ body {
     
     .sidebar {
         width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    .sidebar-header {
+        padding: 16px 20px;
+    }
+    
+    .sidebar-header h2 {
+        font-size: 20px;
+    }
+    
+    .sidebar-nav {
+        display: flex;
+        overflow-x: auto;
+        padding: 12px;
+        gap: 8px;
+    }
+    
+    .sidebar-nav a {
+        white-space: nowrap;
+        padding: 12px 16px;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+    
+    .content-header {
+        padding: 20px;
+    }
+    
+    .content-header h1 {
+        font-size: 22px;
+        margin-bottom: 12px;
     }
     
     .header-stats {
         flex-wrap: wrap;
+        gap: 12px;
+    }
+    
+    .stat-card {
+        flex: 1;
+        min-width: 140px;
+    }
+    
+    .content-body {
+        padding: 20px;
     }
     
     .table-container {
         overflow-x: auto;
+        border-radius: 12px;
     }
+    
+    .data-table {
+        min-width: 800px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 10px 12px;
+        font-size: 12px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 4px;
+    }
+    
+    .btn-action {
+        width: 100%;
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-header {
+        padding: 12px 16px;
+    }
+    
+    .sidebar-header h2 {
+        font-size: 18px;
+    }
+    
+    .sidebar-nav {
+        padding: 8px;
+    }
+    
+    .sidebar-nav a {
+        padding: 10px 14px;
+        font-size: 13px;
+    }
+    
+    .sidebar-nav a i {
+        font-size: 16px;
+    }
+    
+    .content-header {
+        padding: 16px;
+    }
+    
+    .content-header h1 {
+        font-size: 20px;
+    }
+    
+    .stat-card {
+        padding: 10px 16px;
+        min-width: 120px;
+    }
+    
+    .stat-label {
+        font-size: 12px;
+    }
+    
+    .stat-value {
+        font-size: 18px;
+    }
+    
+    .content-body {
+        padding: 16px;
+    }
+    
+    .data-table {
+        min-width: 700px;
+    }
+    
+    .data-table th,
+    .data-table td {
+        padding: 8px 10px;
+        font-size: 11px;
+    }
+    
+    .status-badge {
+        padding: 4px 8px;
+        font-size: 10px;
+    }
+    
+    .user-type-badge {
+        padding: 3px 8px;
+        font-size: 10px;
+    }
+    
+    .date-cell {
+        font-size: 11px;
+    }
+}
+
+/* Scrollbar Styling */
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: var(--surface-container);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: var(--outline-variant);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: var(--outline);
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    height: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }

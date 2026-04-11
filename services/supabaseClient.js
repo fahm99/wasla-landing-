@@ -1,5 +1,4 @@
-/**
- * Supabase Client Configuration
+/**abase Client Configuration
  * Using Supabase JS Client for connecting to the backend
  */
 
@@ -122,3 +121,4 @@ const waitlistService = {
 // Export for global use
 window.waitlistService = waitlistService;
 window.initSupabase = initSupabase;
+ 

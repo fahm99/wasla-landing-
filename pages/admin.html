@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasla Admin - قائمة الانتظار</title>
+    <meta name="description" content="Wasla Admin Dashboard for managing waitlist">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="icon" href="assets/favicon.png" type="image/png">
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Wasla Admin</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="active">
+                    <i class="fas fa-users"></i>
+                    قائمة الانتظار
+                </a>
+                <a href="#">
+                    <i class="fas fa-envelope"></i>
+                    إرسال الإيميلات
+                </a>
+                <a href="index.html">
+                    <i class="fas fa-arrow-left"></i>
+                    العودة للموقع
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>إدارة قائمة الانتظار</h1>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <span class="stat-label">إجمالي المسجلين</span>
+                        <span class="stat-value" id="totalCount">0</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-label">تم إرسال الإيميل</span>
+                        <span class="stat-value" id="sentCount">0</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-body">
+                <div class="table-container">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>البريد الإلكتروني</th>
+                                <th>نوع المستخدم</th>
+                                <th>تاريخ التسجيل</th>
+                                <th>حالة الإيميل</th>
+                                <th>إجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="waitlistTable">
+                            <tr>
+                                <td colspan="6" class="loading">جاري التحميل...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="services/supabaseClient.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+</html>

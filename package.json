@@ -1,20 +1,27 @@
 {
-  "name": "wasla-landing",
+  "name": "wasla-next",
   "version": "1.0.0",
-  "description": "Wasla Landing Page - منصة تعليمية تربط بين الطلاب والمدربين",
+  "description": "Wasla (وصلة) - Landing Page - منصة تعليمية تربط بين الطلاب والمدربين",
   "scripts": {
-    "deploy": "vercel",
-    "deploy:prod": "vercel --prod"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
-  "keywords": [
-    "education",
-    "learning",
-    "arabic",
-    "landing-page"
-  ],
+  "keywords": ["education", "learning", "arabic", "nextjs"],
   "author": "",
   "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.103.0",
+    "next": "^16.2.3",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
   "devDependencies": {
-    "vercel": "^37.0.0"
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "typescript": "^6.0.2",
+    "vercel": "^37.14.0"
   }
 }

@@ -41,11 +41,27 @@ export default function HomePage() {
   const submitWaitlist = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!email || !userType) return;
+    if (!email || !userType) {
+      alert('يرجى إدخال البريد الإلكتروني واختيار نوع المستخدم');
+      return;
+    }
     
     setIsSubmitting(true);
 
     try {
+      // Check if email already exists first
+      const { data: existingEmail } = await supabase
+        .from('waitlist')
+        .select('email')
+        .eq('email', email)
+        .maybeSingle();
+      
+      if (existingEmail) {
+        alert('هذا البريد الإلكتروني مسجل مسبقاً!');
+        setIsSubmitting(false);
+        return;
+      }
+
       const { error } = await supabase
         .from('waitlist')
         .insert([
@@ -57,16 +73,23 @@ export default function HomePage() {
         ]);
 
       if (error) {
+        console.error('Supabase error:', error);
+        
+        // Handle specific error cases
         if (error.code === '23505') {
           alert('هذا البريد الإلكتروني مسجل مسبقاً!');
+        } else if (error.message && error.message.includes('relation') && error.message.includes('does not exist')) {
+          alert('جدول قائمة الانتظار غير موجود. يرجى التواصل مع الدعم الفني.');
+        } else if (error.message && error.message.includes('JWT')) {
+          alert('خطأ في الاتصال بالخادم. يرجى المحاولة لاحقاً.');
         } else {
-          throw error;
+          alert('حدث خطأ: ' + (error.message || 'يرجى المحاولة مرة أخرى'));
         }
       } else {
         closeWaitlistModal();
         setIsSuccessModalOpen(true);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error:', error);
       alert('حدث خطأ. يرجى المحاولة مرة أخرى.');
     } finally {

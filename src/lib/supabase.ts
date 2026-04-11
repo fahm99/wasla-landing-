@@ -1,8 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase configuration - Use environment variables
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Provide fallback values for build time to prevent prerender errors
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://hmgisljihrsztskvmbfd.supabase.co';
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtZ2lzbGppaHJzenRza3ZtYmZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ1MzI4NzksImV4cCI6MjA1MDEwODg3OX0.sb_publishable_-ZiqWMN8A8uZdjO6S0prlQ_6GVN6my8';
 
 // Create and export the Supabase client
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

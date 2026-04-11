@@ -143,16 +143,7 @@ export default function HomePage() {
             </div>
             <div className="hero-image">
               <div className="hero-image-wrapper">
-                <div className="hero-image-fallback" style={{ display: 'flex' }}>
-                  <i className="fas fa-graduation-cap"></i>
-                </div>
-              </div>
-              <div className="hero-badge">
-                <i className="fas fa-check-circle"></i>
-                <div>
-                  <span className="badge-percent">98%</span>
-                  <span className="badge-text">نسبة رضا المستخدمين</span>
-                </div>
+                <img src="/dashboard.png" alt="لوحة تحكم وصلة" />
               </div>
             </div>
           </div>

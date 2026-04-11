@@ -291,6 +291,114 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* App Screens Section */}
+      <section className="app-screens">
+        <div className="container">
+          <div className="section-header">
+            <h2 className="section-title app-screens-title">تجربة مستخدم استثنائية مصممة خصيصاً لتناسب نمط حياتك</h2>
+          </div>
+          <div className="screens-showcase">
+            <div className="phone-mockup">
+              <div className="phone-frame">
+                <div className="phone-screen">
+                  <div className="screen-header">
+                    <span className="screen-logo">وصلة</span>
+                    <i className="fas fa-search"></i>
+                  </div>
+                  <div className="screen-content">
+                    <div className="screen-search">
+                      <input type="text" placeholder="البحث في الكورسات..." disabled />
+                    </div>
+                    <div className="screen-filters">
+                      <span className="filter-tag active">الكل</span>
+                      <span className="filter-tag">تسويق</span>
+                      <span className="filter-tag">برمجة</span>
+                      <span className="filter-tag">تصميم</span>
+                    </div>
+                    <div className="screen-course-card">
+                      <div className="course-thumb"></div>
+                      <div className="course-info">
+                        <h5>مقدمة في تحليل البيانات</h5>
+                        <p>د. أحمد محمد</p>
+                        <div className="course-meta">
+                          <span><i className="fas fa-star"></i> 4.7</span>
+                          <span>245 طالب</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="screen-course-card">
+                      <div className="course-thumb second"></div>
+                      <div className="course-info">
+                        <h5>أساسيات البرمجة</h5>
+                        <p>م. سارة أحمد</p>
+                        <div className="course-meta">
+                          <span><i className="fas fa-star"></i> 4.9</span>
+                          <span>312 طالب</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="screen-nav">
+                    <span><i className="fas fa-home"></i></span>
+                    <span><i className="fas fa-search"></i></span>
+                    <span className="active"><i className="fas fa-book"></i></span>
+                    <span><i className="fas fa-user"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="phone-mockup center">
+              <div className="phone-frame">
+                <div className="phone-screen">
+                  <div className="screen-header">
+                    <span className="screen-logo">وصلة أكاديمي</span>
+                    <i className="fas fa-bars"></i>
+                  </div>
+                  <div className="screen-content institute">
+                    <div className="institute-banner"></div>
+                    <div className="institute-info">
+                      <h4>معهد عالي</h4>
+                      <p>مرخص - خريجونا متميزون</p>
+                    </div>
+                    <div className="institute-categories">
+                      <span className="cat-label">الشركاء</span>
+                      <div className="cat-icons">
+                        <div className="cat-icon"><i className="fas fa-university"></i><span>الجامعات</span></div>
+                        <div className="cat-icon"><i className="fas fa-building"></i><span>المعاهد</span></div>
+                        <div className="cat-icon"><i className="fas fa-user-tie"></i><span>المدربين</span></div>
+                      </div>
+                    </div>
+                    <div className="recommended-section">
+                      <span>الكورسات الموصى بها</span>
+                    </div>
+                  </div>
+                  <div className="screen-nav">
+                    <span><i className="fas fa-home"></i></span>
+                    <span className="active"><i className="fas fa-th-large"></i></span>
+                    <span><i className="fas fa-user"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="phone-mockup">
+              <div className="phone-frame">
+                <div className="phone-screen splash">
+                  <div className="splash-logo">
+                    <span className="wasla-logo">وصلة</span>
+                    <span className="wasla-en">Wasla</span>
+                  </div>
+                  <h3>منصة وصلة أكاديمي</h3>
+                  <p>منصة التعليم الأولى في الوطن العربي</p>
+                  <div className="splash-image"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* App Preview Section */}
       <section className="app-preview">
         <div className="container">

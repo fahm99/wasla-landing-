@@ -1,0 +1,20 @@
+{
+  "name": "wasla-landing",
+  "version": "1.0.0",
+  "description": "Wasla Landing Page - منصة تعليمية تربط بين الطلاب والمدربين",
+  "scripts": {
+    "deploy": "vercel",
+    "deploy:prod": "vercel --prod"
+  },
+  "keywords": [
+    "education",
+    "learning",
+    "arabic",
+    "landing-page"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^37.0.0"
+  }
+}

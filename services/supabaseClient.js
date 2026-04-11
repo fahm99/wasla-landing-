@@ -1,20 +1,31 @@
-/**abase Client Configuration
+/**
+ * Supabase Client Configuration
  * Using Supabase JS Client for connecting to the backend
  */
 
-// Supabase configuration - using the same credentials from the Flutter app
+// Supabase configuration
 const SUPABASE_URL = 'https://hmgisljihrsztskvmbfd.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtZ2lzbGppaHJzenRza3ZtYmZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQ1MzI4NzksImV4cCI6MjA1MDEwODg3OX0.sb_publishable_-ZiqWMN8A8uZdjO6S0prlQ_6GVN6my8';
 
-// Initialize Supabase client (assigned globally from script tag)
+// Initialize Supabase client
 let supabase;
 
 async function initSupabase() {
-    if (typeof window.supabase !== 'undefined') {
-        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    try {
+        if (typeof window.supabase === 'undefined') {
+            throw new Error('Supabase library not loaded. Please check your internet connection.');
+        }
+        
+        if (!supabase) {
+            supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+            console.log('Supabase client initialized successfully');
+        }
+        
         return supabase;
+    } catch (error) {
+        console.error('Failed to initialize Supabase:', error);
+        throw error;
     }
-    throw new Error('Supabase client not loaded');
 }
 
 // Waitlist service functions
@@ -26,24 +37,41 @@ const waitlistService = {
    * @returns {Promise} - Result of the insert operation
    */
   async addToWaitlist(email, userType) {
-    if (!supabase) await initSupabase();
-    
     try {
+      if (!supabase) await initSupabase();
+      
+      console.log('Adding to waitlist:', { email, userType });
+      
       const { data, error } = await supabase
         .from('waitlist')
         .insert([
           {
             email: email,
             user_type: userType,
-            created_at: new Date().toISOString(),
             email_sent: false
           }
-        ]);
+        ])
+        .select();
       
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw error;
+      }
+      
+      console.log('Successfully added to waitlist:', data);
       return { success: true, data };
     } catch (error) {
       console.error('Error adding to waitlist:', error);
+      
+      // رسائل خطأ مفصلة
+      if (error.code === '23505') {
+        throw new Error('هذا البريد الإلكتروني مسجل مسبقاً');
+      } else if (error.message.includes('JWT')) {
+        throw new Error('خطأ في الاتصال بقاعدة البيانات. يرجى التحقق من إعدادات Supabase');
+      } else if (error.message.includes('relation')) {
+        throw new Error('جدول قائمة الانتظار غير موجود. يرجى إنشاؤه في Supabase');
+      }
+      
       throw error;
     }
   },

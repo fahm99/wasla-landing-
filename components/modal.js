@@ -80,6 +80,7 @@ async function submitWaitlist(event) {
     
     if (!emailInput || !userTypeSelect || !submitBtn) {
         console.error('Form elements not found');
+        alert('خطأ في النموذج. يرجى إعادة تحميل الصفحة');
         return;
     }
     
@@ -104,6 +105,8 @@ async function submitWaitlist(event) {
     submitBtn.disabled = true;
     
     try {
+        console.log('Submitting form...', { email, userType });
+        
         // Check if email already exists
         const exists = await waitlistService.checkEmailExists(email);
         
@@ -115,14 +118,23 @@ async function submitWaitlist(event) {
         }
         
         // Add to waitlist
-        await waitlistService.addToWaitlist(email, userType);
+        const result = await waitlistService.addToWaitlist(email, userType);
+        console.log('Form submitted successfully:', result);
         
         // Show success
         showSuccessModal();
         
     } catch (error) {
         console.error('Error submitting form:', error);
-        alert('حدث خطأ، يرجى المحاولة مرة أخرى');
+        
+        // عرض رسالة الخطأ المناسبة
+        let errorMessage = 'حدث خطأ، يرجى المحاولة مرة أخرى';
+        
+        if (error.message) {
+            errorMessage = error.message;
+        }
+        
+        alert(errorMessage);
     } finally {
         submitBtn.innerHTML = originalText;
         submitBtn.disabled = false;

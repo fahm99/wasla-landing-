@@ -12,8 +12,9 @@
 
 ## 🛠️ التقنيات المستخدمة
 
-- Next.js 16 (App Router)
-- TypeScript
+- HTML5
+- CSS3 (Custom Properties)
+- Vanilla JavaScript
 - Supabase (Backend)
 - Font Awesome Icons
 - Google Fonts (Cairo, Tajawal, IBM Plex Sans Arabic)
@@ -21,39 +22,31 @@
 ## 📦 التثبيت والتشغيل
 
 ### متطلبات التشغيل
-
-- Node.js 18+
+- متصفح ويب حديث
 - حساب Supabase (للباكيند)
 
 ### خطوات التشغيل المحلي
 
 1. استنساخ المشروع:
 ```bash
-git clone https://github.com/fahm99/wasla-next.git
-cd wasla-next
+git clone https://github.com/fahm99/wasla-landing-.git
+cd wasla-landing-
 ```
 
-2. تثبيت المتطلبات:
+2. افتح ملف `index.html` في المتصفح
+
+أو استخدم خادم محلي:
 ```bash
-npm install
+# باستخدام Python
+python -m http.server 8000
+
+# باستخدام Node.js
+npx serve
 ```
 
-3. إعداد المتغيرات البيئية:
-```bash
-cp .env.local .env
-# ثم قم بتحديث المتغيرات في الملف
-```
+## 🗄️ إعداد قاعدة البيانات
 
-4. تشغيل السيرفر:
-```bash
-npm run dev
-```
-
-5. افتح http://localhost:3000
-
-## 🗄️ إعداد Supabase
-
-### إنشاء جدول waitlist
+قم بإنشاء جدول `waitlist` في Supabase:
 
 ```sql
 CREATE TABLE waitlist (
@@ -79,30 +72,19 @@ CREATE POLICY "Enable update access for all users" ON waitlist
   FOR UPDATE USING (true);
 ```
 
-### المتغيرات البيئية المطلوبة
+## 🔧 التكوين
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+قم بتحديث بيانات Supabase في ملف `services/supabaseClient.js`:
+
+```javascript
+const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
 ```
 
 ## 📱 الصفحات
 
-- **الصفحة الرئيسية** (`/`): صفحة الهبوط الرئيسية
-- **لوحة الإدارة** (`/admin`): إدارة قائمة الانتظار
-
-## 🚀 النشر على Vercel
-
-```bash
-# تسجيل الدخول
-vercel login
-
-# نشر
-vercel
-
-# نشر للإنتاج
-vercel --prod
-```
+- **الصفحة الرئيسية** (`index.html`): صفحة الهبوط الرئيسية
+- **لوحة الإدارة** (`pages/admin.html`): إدارة قائمة الانتظار
 
 ## 🎨 التصميم
 

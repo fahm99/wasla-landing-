@@ -7,8 +7,8 @@
     }
   ],
   "env": {
-    "NEXT_PUBLIC_SUPABASE_URL": "@supabase_url",
-    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase_anon_key"
+    "NEXT_PUBLIC_SUPABASE_URL": "https://hmgisljihrsztskvmbfd.supabase.co",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtZ2lzbGppaHJzenRza3ZtYmZkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU1NjAyNjEsImV4cCI6MjA5MTEzNjI2MX0.Aunodx4B6O9hgSeEtJa3iKg9ydbxYK601kYUIINpr2g"
   },
   "regions": ["iad1"]
 }
